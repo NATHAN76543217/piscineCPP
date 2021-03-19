@@ -1,7 +1,7 @@
 .PHONY: all clean fclean re
 
 # Name of file
-NAME		=	"anNU(L)aire"
+NAME		=	"zombie"
 
 # Name directory
 PATH_INC	=	includes
