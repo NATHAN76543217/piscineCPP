@@ -10,11 +10,11 @@ PATH_OBJ	=	objs
 
 # List of sources
 SRCS_FILES	= 	$(shell find $(PATH_SRC) -type f | cut -d/ -f2- )
-# INC_FILES	=	$(shell ls  $(PATH_INC))
+INC_FILES	=	$(shell find $(PATH_INC) -type f | cut -d/ -f2- )
 # SRCS		=	$(addprefix $(PATH_SRC)/, $(SRCS_FILES))
 
 OBJS		=	$(addprefix $(PATH_OBJ)/, $(SRCS_FILES:.cpp=.o))
-# INCS		=	$(addprefix $(PATH_INC)/, )
+INCS		=	$(addprefix $(PATH_INC)/, $(INC_FILES))
 DIRS_LIST	=	$(shell ls -R $(PATH_SRC) 2> /dev/null | grep / | cut -d / -f2-3 | cut -d : -f 1)
 
 # Commands of compilation

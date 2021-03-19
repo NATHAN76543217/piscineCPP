@@ -8,5 +8,6 @@ int main()
 	nul.displayCommands();
 	while (nul.isOpen())
 		nul.command(nul.askInput());
+
 	return 0;
 }

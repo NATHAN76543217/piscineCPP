@@ -1,17 +1,8 @@
-#include <iostream>
-#include <iomanip>
 #include "Annuaire.hpp"
-
-std::string	truncate(std::string str)
-{
-	if (str.length() > 10)
-		return str.substr(0, 9) + ".";
-	return str; 
-}
 
 Annuaire::Annuaire(void)
 {
-	this->open = true;
+	this->_open = true;
 	this->nbRegistered = 0;
 	this->nbMax = 8;
 	return ;
@@ -34,15 +25,15 @@ void	Annuaire::displayCommands(void) const
 
 bool	Annuaire::isOpen(void) const
 {
-	return this->open;
+	return this->_open;
 }
 
 std::string Annuaire::askInput(void) const
 {
 	std::string command;
 
-	std::cout << "Please enter a command:" << std::endl;
-	std::cin >> command;
+	std::cout << "Please enter a command (ADD, SEARCH, EXIT):" << std::endl;
+	std::getline(std::cin, command);
 	return command;   
 }
 
@@ -61,9 +52,9 @@ int		Annuaire::command(std::string cmd)
 
 void	Annuaire::close(void)
 {
-	if (this->youWantTo("quit"))
+	if (youWantTo("quit"))
 	{
-		this->open = false;
+		this->_open = false;
 		std::cout << "GOODBYE, you lost your contacts." << std::endl;
 	}
 	return ;
@@ -83,8 +74,6 @@ void	Annuaire::addContact(void)
 			std::cout << "- Adding an user -" << std::endl;
 			this->contacts[i].fill();
 			std::cout << "- Contact complete and added -" << std::endl;
-    		std::cin.clear();
-    		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			this->nbRegistered++;
 			return ;
 		}
@@ -114,7 +103,7 @@ void	Annuaire::search(void) const
 	}
 	if (this->nbRegistered != 0)
 	{
-		if(this->youWantTo("have more details"))
+		if (youWantTo("have more details"))
 		{
 			index = this->askIndex();
 			if (index != -1)
@@ -122,43 +111,27 @@ void	Annuaire::search(void) const
 		}
 	}
 	else
-		std::cout << "You haven't any contact registered" << std::endl;
+		std::cout << "You haven't any contact registered" << std::endl << std::endl;
 	return ;
 }
 
 int		Annuaire::askIndex(void) const
 {
-	int index = 0;
+	int index = -1;
+	std::string buf;
 
 	do{
 		std::cout << "Enter an index to see more details:" << std::endl;
-		std::cin >> index;
-		while ( !std::cin )
-		{
-			std::cin.clear ();
-			std::cin.ignore ( std::numeric_limits<std::streamsize>::max() , '\n' );
-			std::cout << "I said enter an index, thats mean a number. Try again:" << std::endl;
-			std::cin >> index;
+		std::getline(std::cin, buf);
+		try{
+			index = stoi(buf);
+			if (index < this->nbMax && index >= 0 && this->contacts[index].filled == true)
+				return index;
+			std::cout << "This is an invalid index." << std::endl;
+	    }
+		catch (const std::exception& e) {
+			std::cout << "I said enter an index, thats mean a number beetween 0 and the number of contact registered." << std::endl;
 		}
-		if (index < this->nbMax && this->contacts[index].filled == true)
-			return index;
-		std::cout << "This is an invalid index." << std::endl;
-		
-	} while(this->youWantTo("enter another index"));
+	} while(youWantTo("enter another index"));
 	return -1;
-}
-
-bool	Annuaire::youWantTo(std::string str)
-{
-	char type;
-
-	do
-	{
-		std::cout << "Do you want to " << str << "? [y/n]" << std::endl;
-		std::cin >> type;
-	}
-	while( !std::cin.fail() && type!='y' && type!='n' );	
-	if (type=='y')
-		return true;
-	return false;
 }

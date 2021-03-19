@@ -15,7 +15,7 @@ public:
 	void	askLastName(void);
 	void    askNickName(void);
 	void    askLogin(void);
-	void    askPostalCode(void);
+	void    askPostalAddress(void);
 	void    askEmail(void);
 	void    askPhone(void);
 	void    askBirthday(void);
@@ -37,8 +37,8 @@ private:
 	std::string meal;
 	std::string underware_color;
 	std::string secret;
-	int			postal;
-	int			phone;
+	std::string	postal;
+	std::string	phone;
 
 };
 #endif // CONTACT_CLASS_H

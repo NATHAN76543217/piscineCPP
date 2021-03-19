@@ -1,7 +1,10 @@
 #ifndef ANNUAIRE_CLASS_H
 # define ANNUAIRE_CLASS_H
 
+# include <iostream>
+# include <iomanip>
 # include "Contact.hpp"
+# include "utils.hpp"
 
 class Annuaire{
 public:
@@ -20,11 +23,9 @@ public:
     std::string askInput(void) const;
 
 private:
-    bool    open;
+    bool    _open;
 
 	int         askIndex(void) const;
-    static bool youWantTo(std::string str);
-
 };
 
 #endif //ANNUAIRE_CLASS_H
