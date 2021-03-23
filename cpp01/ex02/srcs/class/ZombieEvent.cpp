@@ -5,7 +5,7 @@
 ** --------------------------------- GLOBALS ----------------------------------
 */
 
-static const std::string nameList[] = {"coucou", "bonjours", "Ann", "Luck", "kikou", "eibmoz", "deadman"};
+const std::string ZombieEvent::nameList[] = {"coucou", "bonjours", "Ann", "Luck", "kikou", "eibmoz", "deadman"};
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -41,6 +41,7 @@ Zombie * ZombieEvent::newZombie (std::string name)
 
 void	ZombieEvent::setZombieType (std::string type)
 {
+	std::cout << "zombie type set to: " << type << std::endl;
 	this->_type = type;
 }
 
@@ -57,7 +58,7 @@ std::string	ZombieEvent::getRandomName() const
     std::mt19937 gen(seedGen()); // create generator from seed
     std::uniform_int_distribution<> distr(0, 6); // define the range
 
-	return nameList[distr(gen)];
+	return this->nameList[distr(gen)];
 }
 
 /*

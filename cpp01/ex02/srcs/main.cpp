@@ -11,7 +11,8 @@ int main()
     Zombie *z2 = ze.newZombie("Mick");
     z1->announce();
     z2->announce();
-
+    
+    ze.setZombieType("random");
     ze.randomChump();
     ze.randomChump();
     ze.randomChump();
