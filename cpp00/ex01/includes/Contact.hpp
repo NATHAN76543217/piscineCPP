@@ -28,17 +28,17 @@ public:
 	std::string getNickName(void) const;
 
 private:
-	std::string firstName;
-	std::string lastName;
-	std::string nickname;
-	std::string login;
-	std::string email;
-	std::string birthday;
-	std::string meal;
-	std::string underware_color;
-	std::string secret;
-	std::string	postal;
-	std::string	phone;
+	std::string _firstName;
+	std::string _lastName;
+	std::string _nickname;
+	std::string _login;
+	std::string _email;
+	std::string _birthday;
+	std::string _meal;
+	std::string _underware_color;
+	std::string _secret;
+	std::string	_postal;
+	std::string	_phone;
 
 };
 #endif // CONTACT_CLASS_H

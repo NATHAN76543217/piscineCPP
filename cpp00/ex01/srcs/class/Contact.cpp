@@ -1,8 +1,7 @@
 # include "Contact.hpp"
 
-Contact::Contact(void)
+Contact::Contact(void) : filled(false)
 {
-    this->filled = false;
     return;
 }
 
@@ -13,8 +12,6 @@ Contact::~Contact()
 
 void    Contact::fill(void)
 {
-    std::string command;
-
     this->askFirstName();
     this->askLastName();
     this->askNickName();
@@ -32,106 +29,106 @@ void    Contact::fill(void)
 void    Contact::askFirstName(void)
 {
     std::cout << "Please enter your first name:" << std::endl;
-    std::getline(std::cin, this->firstName);
+    std::getline(std::cin, this->_firstName);
     return ;
 }
 
 void    Contact::askLastName(void)
 {
     std::cout << "Please enter your last name:" << std::endl;
-    std::getline(std::cin, this->lastName);
+    std::getline(std::cin, this->_lastName);
     return ;
 }
 
 void    Contact::askNickName(void)
 {
     std::cout << "Please enter your nick name:" << std::endl;
-    std::getline(std::cin, this->nickname);
+    std::getline(std::cin, this->_nickname);
     return ;
 }
 
 void    Contact::askLogin(void)
 {
     std::cout << "Please enter your login:" << std::endl;
-    std::getline(std::cin, this->login);
+    std::getline(std::cin, this->_login);
     return ;
 }
 
 void    Contact::askPostalAddress(void)
 {
     std::cout << "Please enter your postal address:" << std::endl;
-    std::getline(std::cin, this->postal);
+    std::getline(std::cin, this->_postal);
     return ;
 }
 
 void    Contact::askEmail(void)
 {
     std::cout << "Please enter your email:" << std::endl;
-    std::getline(std::cin, this->email);
+    std::getline(std::cin, this->_email);
     return ;
 }
 
 void    Contact::askPhone(void)
 {
     std::cout << "Please enter your phone number:" << std::endl;
-    std::getline(std::cin, this->phone);
+    std::getline(std::cin, this->_phone);
     return ;
 }
 
 void    Contact::askBirthday(void)
 {
     std::cout << "Please enter your birthday:" << std::endl;
-    std::getline(std::cin, this->birthday);
+    std::getline(std::cin, this->_birthday);
     return ;
 }
 
 void    Contact::askMeal(void)
 {
     std::cout << "Please enter your favorite meal:" << std::endl;
-    std::getline(std::cin ,this->meal);
+    std::getline(std::cin ,this->_meal);
     return ;
 }
 
 void    Contact::askUnderwear(void)
 {
     std::cout << "Please enter your underwear color:" << std::endl;
-    std::getline(std::cin, this->underware_color);
+    std::getline(std::cin, this->_underware_color);
     return ;
 }
 
 void    Contact::askSecret(void)
 {
     std::cout << "Please enter your darkest secret:" << std::endl;
-    std::getline(std::cin, this->secret);
+    std::getline(std::cin, this->_secret);
     return ;
 }
 
 void    Contact::printInfo(void) const
 {
     std::cout << std::left <<
-    	std::setw(17) << "First name: " << this->firstName << std::endl <<
-	    std::setw(17) << "Last name: " << this->lastName << std::endl <<
-	    std::setw(17) << "Nickname: " << this->nickname << std::endl <<
-	    std::setw(17) << "Login: " << this->login << std::endl <<
-    	std::setw(17) << "Postal code: " << this->postal << std::endl <<
-	    std::setw(17) << "Email: " << this->email << std::endl <<
-	    std::setw(17) << "Phone number: " << this->phone << std::endl <<
-	    std::setw(17) << "Birthday: " << this->birthday << std::endl <<
-	    std::setw(17) << "Favorite meal: " << this->meal << std::endl <<
-	    std::setw(17) << "Underwear color: " << this->underware_color << std::endl <<
-	    std::setw(17) << "Darkest Secret:" << this->secret << std::endl <<
+    	std::setw(17) << "First name: " << this->_firstName << std::endl <<
+	    std::setw(17) << "Last name: " << this->_lastName << std::endl <<
+	    std::setw(17) << "Nickname: " << this->_nickname << std::endl <<
+	    std::setw(17) << "Login: " << this->_login << std::endl <<
+    	std::setw(17) << "Postal code: " << this->_postal << std::endl <<
+	    std::setw(17) << "Email: " << this->_email << std::endl <<
+	    std::setw(17) << "Phone number: " << this->_phone << std::endl <<
+	    std::setw(17) << "Birthday: " << this->_birthday << std::endl <<
+	    std::setw(17) << "Favorite meal: " << this->_meal << std::endl <<
+	    std::setw(17) << "Underwear color: " << this->_underware_color << std::endl <<
+	    std::setw(17) << "Darkest Secret:" << this->_secret << std::endl <<
         std::endl;
     return ;
 }
 
 std::string Contact::getFirstName(void) const{
-    return this->firstName;
+    return this->_firstName;
 }
 
 std::string Contact::getLastName(void) const{
-    return this->lastName;
+    return this->_lastName;
 }
 
 std::string Contact::getNickName(void) const{
-    return this->nickname;
+    return this->_nickname;
 }

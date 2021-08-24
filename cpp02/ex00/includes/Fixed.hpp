@@ -14,11 +14,12 @@ class Fixed
 		~Fixed();
 
 		Fixed &		operator=( Fixed const & rhs );
-
+		
+		int		getRawBits(void) const;
+		void	setRawBits(int const value);
 	private:
-
+		int	_value;
+		static const int _fpart;
 };
-
-std::ostream &			operator<<( std::ostream & o, Fixed const & i );
 
 #endif /* *********************************************************** FIXED_H */

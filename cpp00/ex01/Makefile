@@ -3,23 +3,26 @@
 # Name of file
 NAME		=	"anNU(L)aire"
 
-# Name directory
+# Directories name
 PATH_INC	=	includes
-PATH_SRC	=	srcs
-PATH_OBJ	=	objs
+PATH_SRC	=	srcs/
+PATH_OBJ	=	objs/
+PATH_CLASS	=	class
 
 # List of sources
-SRCS_FILES	= 	$(shell find $(PATH_SRC) -type f | cut -d/ -f2- )
-INC_FILES	=	$(shell find $(PATH_INC) -type f | cut -d/ -f2- )
-# SRCS		=	$(addprefix $(PATH_SRC)/, $(SRCS_FILES))
+SRCS_FILES	= 	main.cpp 
+SRCS_CLASS	= 	Annuaire.cpp Contact.cpp
+INC_FILES	=	Annuaire.hpp Contact.hpp
 
-OBJS		=	$(addprefix $(PATH_OBJ)/, $(SRCS_FILES:.cpp=.o))
+SRCS		=	$(addprefix $(), $(SRCS_FILES) $(addprefix $(PATH_CLASS)/, $(SRCS_CLASS)))
+OBJS		=	$(addprefix $(PATH_OBJ), $(SRCS:%.cpp=%.o))
 INCS		=	$(addprefix $(PATH_INC)/, $(INC_FILES))
-DIRS_LIST	=	$(shell ls -R $(PATH_SRC) 2> /dev/null | grep / | cut -d / -f2-3 | cut -d : -f 1)
+DIRS_LIST	=	class
+# DIRS_LIST	=	$(shell ls -R $(PATH_SRC) 2> /dev/null | grep / | cut -d / -f2-3 | cut -d : -f 1)
 
 # Commands of compilation
 COMP		=	clang++
-COMP_FLAG	=	-Wall -Werror -Wextra -I$(PATH_INC)
+COMP_FLAG	=	-Wall -Werror -Wextra --std=c++98 -I$(PATH_INC)
 COMP_DEB	=	-g3 -fsanitize=address
 
 # Others Command
@@ -37,18 +40,18 @@ all:	init $(NAME)
 	@ echo "$(_SUCCESS) Compilation done"
 
 init:
-	@ mkdir -p $(PATH_OBJ)/$(DIRS_LIST)
+	@ mkdir -p $(addprefix $(PATH_OBJ)/, $(DIRS_LIST))
 
 $(NAME): $(OBJS) $(INCS)
 	@ $(SETLIST) $(COMP) $(COMP_FLAG) -o $(NAME) $(OBJS)
 
-# $(PATH_OBJ)/%.o : %.cpp  $(INCS)
-# 	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
-# 	@ echo "$(_INFO) Compilation of $*"
-
-$(PATH_OBJ)/%.o : $(PATH_SRC)/%.cpp  $(INCS)
+$(PATH_OBJ)%.o : $(PATH_SRC)%.cpp  $(INCS)
 	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
 	@ echo "$(_INFO) Compilation of $*"
+
+# $(PATH_OBJ)%.o : $(PATH_SRC)%.cpp  $(INCS)
+# 	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
+# 	@ echo "$(_INFO) Compilation of $*"
 
 clean:
 	@ $(RM) -rf $(PATH_OBJ)
