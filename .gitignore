@@ -1,4 +1,8 @@
 .vscode
 Rcpp*
 objs/
+
+# cpp00
+megaphone
 anNU(L)aire
+R00

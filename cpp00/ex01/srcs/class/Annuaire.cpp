@@ -58,7 +58,7 @@ int		Annuaire::_command(std::string cmd)
 	else if (cmd.compare("SEARCH") == 0)
 		this->_search();
 	else
-		std::cout << "sorry, this command doesn't exist. Try again." << std::endl;
+		std::cout << "sorry, this command doesn't exist. Try again." << std::endl << std::endl;
 	return 0;
 }
 
@@ -157,9 +157,11 @@ bool	Annuaire::youWantTo(std::string str)
 	{
 		std::cout << "Do you want to " << str << "? [y/n]" << std::endl;
 		std::getline(std::cin, type);
-	}
-	while(type!="y" && type!="n");	
-	if (type=="y")
+	} while (type != "y" 
+		&& type != "Y"
+		&& type != "n" 
+		&& type != "N");	
+	if (type == "y" || type == "Y")
 		return true;
 	return false;
 }
