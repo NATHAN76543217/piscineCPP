@@ -10,7 +10,7 @@ PATH_OBJ	=	objs/
 PATH_CLASS	=	class
 
 # List of sources
-SRCS_FILES	= 	main.cpp randomChump.cpp newZombie.cpp
+SRCS_FILES	= 	main.cpp zombieHorde.cpp 
 SRCS_CLASS	= 	Zombie.cpp 
 INC_FILES	=	Zombie.hpp
 

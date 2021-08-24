@@ -1,45 +1,30 @@
-#include "Pony.hpp"
+#include "Zombie.hpp"
 
-void	ponyOnTheStack()
-{
-    Pony    stackyPony("steacky");
+Zombie* newZombie( std::string name );
+void    randomChump( std::string name );
 
-    stackyPony.look();
-    stackyPony.run();
-    stackyPony.jump();
-    stackyPony.run();
-    stackyPony.look();
-    stackyPony.jump();
-    stackyPony.jump();
-    stackyPony.look();
-    stackyPony.run();
-    std::cout << "Leaving 'ponyOnStack' function." << std::endl;
-	return ;
-}
-
-void	ponyOnTheHeap()
-{
-    Pony    *heapyPony = new Pony("heapy");
-
-    heapyPony->look();
-    heapyPony->run();
-    heapyPony->jump();
-    heapyPony->run();
-    heapyPony->look();
-    heapyPony->jump();
-    heapyPony->jump();
-    heapyPony->look();
-    heapyPony->run();
-    std::cout << "Leaving 'ponyonHeap' function." << std::endl;
-	delete heapyPony;
-    return ;
-}
 
 int main()
 {
-    std::cout << "Enter in 'ponyOnStack' function." << std::endl;
-    ponyOnTheStack();
-    std::cout << "Enter in 'ponyOnHeap' function." << std::endl;
-    ponyOnTheHeap();
+    Zombie *zombie;
+    Zombie *zombie2;
+
+    randomChump("numero 1");
+    std::cout << std::endl;
+
+    randomChump("numero 2");
+    std::cout << std::endl;
+
+    randomChump("numero 3");
+    std::cout << std::endl;
+
+    zombie = newZombie("numero 4");
+    zombie->announce();
+    std::cout << std::endl;
+    
+    zombie2 = newZombie("numero 5");
+    zombie2->announce();
+    delete zombie;
+    delete zombie2;
     return 0;
 }
