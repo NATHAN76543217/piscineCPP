@@ -1,9 +1,11 @@
 #include "Karen.hpp"
 
 /*
-** --------------------------------- GLOBALS ----------------------------------
+** --------------------------------- STATICS ----------------------------------
 */
-	const std::string Karen::_levelNames[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+	const std::string Karen::levelNames[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+	int const Karen::nbr_levels = NBR_LEVELS;
+
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
@@ -38,7 +40,7 @@ void Karen::complain(std::string level) const
 {
 	for (int i = 0; i <= 3; i++)
 	{
-		if (level == this->_levelNames[i])
+		if (level == this->levelNames[i])
 			(this->*_level[i])();
 	}
 }
