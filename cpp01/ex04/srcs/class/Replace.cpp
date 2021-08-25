@@ -51,7 +51,9 @@ void	Replace::replace(std::string s1, std::string s2)
 		std::cout << "s1 and s2 should not be empty" << std::endl;
 		return ;
 	}
-	while (this->_ifs.eof() == false && this->_ifs.fail() == false)
+	while (this->_ifs.eof() == false 
+		&& this->_ifs.fail() == false 
+		&& this->_ofs.fail() == false)
 	{
 		getline(this->_ifs, readed);
 		size_t pos = 0;
