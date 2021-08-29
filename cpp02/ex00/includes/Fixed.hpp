@@ -14,12 +14,13 @@ class Fixed
 		~Fixed();
 
 		Fixed &		operator=( Fixed const & rhs );
-		
-		int		getRawBits(void) const;
-		void	setRawBits(int const value);
+
+		int			getRawBits( void ) const;
+		void		setRawBits( int const raw );
+
 	private:
-		int	_value;
-		static const int _fpart;
+		int					_value;
+		static const int	_floatingPart;
 };
 
 #endif /* *********************************************************** FIXED_H */

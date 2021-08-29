@@ -1,10 +1,10 @@
 #include "Fixed.hpp"
 
 /*
-** ------------------------------- GLOBALS --------------------------------
+** ------------------------------- STATIC --------------------------------
 */
 
-const int Fixed::_fpart = 8;
+const int Fixed::_floatingPart = 8;
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -13,25 +13,23 @@ const int Fixed::_fpart = 8;
 Fixed::Fixed() : _value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->_value <<= this->_fpart;
 }
 
-Fixed::Fixed( const Fixed & src )
-{
-	std::cout << "Copy constructor called" << std::endl;
-	this->_value = src.getRawBits();
-}
-
-Fixed::Fixed(const int value) : _value(value)
+Fixed::Fixed(int const value)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->_value <<= this->_fpart;
+	this->_value = value << this->_floatingPart;
 }
 
-Fixed::Fixed(const float value)
+Fixed::Fixed(float const value)
 {
-	std::cout << "Float constructor called " << std::endl;
-	this->_value = (int)std::roundf(value * (1 << this->_fpart)); 
+	std::cout << "Float constructor called" << std::endl;
+	this->_value = (int) std::roundf(value * (1 << this->_floatingPart));
+}
+
+Fixed::Fixed( const Fixed & src ) : _value(src._value)
+{
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 /*
@@ -48,9 +46,9 @@ Fixed::~Fixed()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Fixed &		Fixed::operator=( Fixed const & rhs )
+Fixed &				Fixed::operator=( Fixed const & rhs )
 {
-	std::cout << "Assignation operator called" << std::endl;
+	std::cout << "assignation operator called" << std::endl;
 	if ( this != &rhs )
 	{
 		this->_value = rhs.getRawBits();
@@ -58,7 +56,7 @@ Fixed &		Fixed::operator=( Fixed const & rhs )
 	return *this;
 }
 
-std::ostream	&operator<<(std::ostream &o, Fixed const &rhs)
+std::ostream & operator<<(std::ostream & o, Fixed const & rhs)
 {
 	o << rhs.toFloat();
 	return o;
@@ -68,30 +66,30 @@ std::ostream	&operator<<(std::ostream &o, Fixed const &rhs)
 ** --------------------------------- METHODS ----------------------------------
 */
 
-int		Fixed::toInt( void ) const
+int 		Fixed::toInt( void ) const
 {
-	return this->_value >> 8;
+	return this->_value >> this->_floatingPart;
 }
 
 float		Fixed::toFloat( void ) const
 {
-	return this->_value / (float)(1 << this->_fpart);
+	return this->_value / (float)(1 << this->_floatingPart);
 }
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-int		Fixed::getRawBits(void) const
+int		Fixed::getRawBits( void ) const 
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	std::cout << "getRawBits called" << std::endl;
 	return this->_value;
-}
+} 
 
-void	Fixed::setRawBits(int const value)
+void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
-	this->_value = value;
-	return ;
+	std::cout << "setRawBits called" << std::endl;
+	this->_value = raw;
 }
 
 /* ************************************************************************** */

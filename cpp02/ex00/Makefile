@@ -1,30 +1,34 @@
 .PHONY: all clean fclean re
 
 # Name of file
-NAME		=	"Fixed"
+NAME		=	test
 
-# Name directory
+# Directories name
 PATH_INC	=	includes
-PATH_SRC	=	srcs
-PATH_OBJ	=	objs
+PATH_SRC	=	srcs/
+PATH_OBJ	=	objs/
+PATH_CLASS	=	class
 
 # List of sources
-SRCS_FILES	= 	$(shell find $(PATH_SRC) -type f | cut -d/ -f2- )
-# INC_FILES	=	$(shell ls  $(PATH_INC))
-# SRCS		=	$(addprefix $(PATH_SRC)/, $(SRCS_FILES))
+SRCS_FILES	= 	main.cpp
+SRCS_CLASS	= 	Fixed.cpp
+INC_FILES	=	Fixed.hpp
 
-OBJS		=	$(addprefix $(PATH_OBJ)/, $(SRCS_FILES:.cpp=.o))
-# INCS		=	$(addprefix $(PATH_INC)/, )
-DIRS_LIST	=	$(shell ls -R $(PATH_SRC) 2> /dev/null | grep / | cut -d / -f2-3 | cut -d : -f 1)
+SRCS		=	$(addprefix $(), $(SRCS_FILES) $(addprefix $(PATH_CLASS)/, $(SRCS_CLASS)))
+OBJS		=	$(addprefix $(PATH_OBJ), $(SRCS:%.cpp=%.o))
+INCS		=	$(addprefix $(PATH_INC)/, $(INC_FILES))
+DIRS_LIST	=	$(PATH_CLASS)
 
 # Commands of compilation
 COMP		=	clang++
-COMP_FLAG	=	-Wall -Werror -Wextra -I$(PATH_INC)
+# COMP_LIB	=	-lc++
+COMP_FLAG	=	-Wall -Werror -Wextra --std=c++98 -I$(PATH_INC) $(COMP_LIB)
 COMP_DEB	=	-g3 -fsanitize=address
 
 # Others Command
 RM			=	/bin/rm
 # SETLIST		=	set -x;
+
 # Color Code and template code
 _YELLOW		=	\033[38;5;184m
 _GREEN		=	\033[38;5;46m
@@ -37,18 +41,19 @@ all:	init $(NAME)
 	@ echo "$(_SUCCESS) Compilation done"
 
 init:
-	@ mkdir -p $(PATH_OBJ)/$(DIRS_LIST)
+	@ mkdir -p $(addprefix $(PATH_OBJ)/, $(DIRS_LIST))
 
 $(NAME): $(OBJS) $(INCS)
 	@ $(SETLIST) $(COMP) $(COMP_FLAG) -o $(NAME) $(OBJS)
+	@ echo "$(_INFO) linking of $(NAME)"
 
-# $(PATH_OBJ)/%.o : %.cpp  $(INCS)
-# 	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
-# 	@ echo "$(_INFO) Compilation of $*"
-
-$(PATH_OBJ)/%.o : $(PATH_SRC)/%.cpp  $(INCS)
+$(PATH_OBJ)%.o : $(PATH_SRC)%.cpp  $(INCS)
 	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
 	@ echo "$(_INFO) Compilation of $*"
+
+# $(PATH_OBJ)%.o : $(PATH_SRC)%.cpp  $(INCS)
+# 	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
+# 	@ echo "$(_INFO) Compilation of $*"
 
 clean:
 	@ $(RM) -rf $(PATH_OBJ)
