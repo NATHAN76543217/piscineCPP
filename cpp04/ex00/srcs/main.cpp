@@ -7,7 +7,8 @@ int main()
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	const WrongAnimal * w = new WrongCat();
+
+	const WrongAnimal* w = new WrongCat();
 	
 	std::cout << std::endl << "Types:" << std::endl;
 	std::cout << j->getType() << " " << std::endl;
@@ -20,7 +21,7 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
-	std::cout << std::endl << "Test with wrong class" << std::endl;
+	std::cout << std::endl << "Test with wrong class:" << std::endl;
 	w->makeSound();
 	return (0);
 }
