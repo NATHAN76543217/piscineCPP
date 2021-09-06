@@ -42,10 +42,10 @@ int	main( void )
 	std::cout << "O = " << O << std::endl;
 	std::cout << "P = " << P << std::endl;
 	std::cout << "Q = " << Q << std::endl << std::endl;
-	std::cout << "bsp M: " << bsp(A, B, C, M) << std::endl;
-	std::cout << "bsp N: " << bsp(A, B, C, N) << std::endl;
-	std::cout << "bsp O: " << bsp(A, B, C, O) << std::endl;
-	std::cout << "bsp P: " << bsp(A, B, C, P) << std::endl;
-	std::cout << "bsp Q: " << bsp(A, B, C, Q) << std::endl;
+	std::cout << "bsp (ABC) -> M: " << bsp(A, B, C, M) << std::endl;
+	std::cout << "bsp (ABC) -> N: " << bsp(A, B, C, N) << std::endl;
+	std::cout << "bsp (ABC) -> O: " << bsp(A, B, C, O) << std::endl;
+	std::cout << "bsp (ABC) -> P: " << bsp(A, B, C, P) << std::endl;
+	std::cout << "bsp (ABC) -> Q: " << bsp(A, B, C, Q) << std::endl;
 	return 0;
 }

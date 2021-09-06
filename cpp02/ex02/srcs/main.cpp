@@ -12,6 +12,7 @@ int	main( void )
 	std::cout << std::left << std::setw(9) << "a: " << a << std::endl;
 	std::cout << std::left << std::setw(9) << "b: " << b << std::endl;
 	std::cout << std::left << std::setw(9) << "c: " << c << std::endl;
+	std::cout << std::left << std::setw(9) << "d: " << d << std::endl;
 	std::cout << std::left << std::setw(9) << "b + c: " << b + c << std::endl;
 	std::cout << std::left << std::setw(9) << "a - b: " << a - b << std::endl;
 	std::cout << std::left << std::setw(9) << "b * c: " << b * c << std::endl;

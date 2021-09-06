@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 
 /*
-** ------------------------------- STATIC --------------------------------
+** --------------------------------- STATICS ---------------------------------
 */
 
 const int Fixed::_floatingPart = 8;
@@ -15,11 +15,9 @@ Fixed::Fixed() : _value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-// Fixed::Fixed( const Fixed & src ) : _value(src._value)
-Fixed::Fixed( const Fixed & src )
+Fixed::Fixed( const Fixed & src ) : _value(src.getRawBits())
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_value = src.getRawBits();
 }
 
 /*
