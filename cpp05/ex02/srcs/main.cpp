@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 int	main()
 {
@@ -17,19 +16,7 @@ int	main()
 
 	std::cout << std::endl << "---exceptions---" << std::endl;
 
-	try
-	{
-		Form		f4("Bad", 0, 120);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-	try
-	{
-		Form		f5("Bad", 30, 151);
-	}
+
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';

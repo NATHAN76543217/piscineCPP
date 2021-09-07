@@ -23,5 +23,10 @@ int main()
 
 	std::cout << std::endl << "Test with wrong class:" << std::endl;
 	w->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
+	delete w;
 	return (0);
 }

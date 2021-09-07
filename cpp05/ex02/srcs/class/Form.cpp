@@ -12,12 +12,20 @@ const	std::string Form::defaultName = "default";
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : _name("default"), _signed(false), _signing_grade(Bureaucrat::gradeMin), _executing_grade(Bureaucrat::gradeMin)
+Form::Form() : 
+	_name(Form::defaultName),
+	_signed(false),
+	_signing_grade(Bureaucrat::gradeMin),
+	_executing_grade(Bureaucrat::gradeMin),
+	_target(Form::defaultName)
 {
 	std::cout << "Form default constructor" << std::endl;
 }
 
-Form::Form(std::string name, uint signingGrade, uint executingGrade) : _name(name), _signed(false)
+Form::Form(std::string name, uint signingGrade, uint executingGrade) : 
+	_name(name),
+	_signed(false),
+	_target(Form::defaultName)
 {
 	this->setSigningGrade(signingGrade);
 	this->setExecutingGrade(executingGrade);
@@ -28,7 +36,8 @@ Form::Form( const Form & src ) :
 	_name(src._name), 
 	_signed(src._signed), 
 	_signing_grade(src._signing_grade),
-	_executing_grade(src._executing_grade) 
+	_executing_grade(src._executing_grade),
+	_target(src._target)
 {
 	std::cout << "Form copy constructor" << std::endl;
 }
@@ -108,7 +117,7 @@ uint				Form::getExecutingGrade( void ) const
 	return this->_executing_grade;
 }
 
-void				Form::setSigningGrade(uint signingGrade)
+void				Form::setSigningGrade(uint signingGrade) throw(Form::gradeTooHighexception, Form::gradeTooLowexception)
 {
 	if (signingGrade < Form::gradeMax)
 		throw Form::gradeTooHighexception();
@@ -117,7 +126,7 @@ void				Form::setSigningGrade(uint signingGrade)
 	this->_signing_grade = signingGrade;
 }
 
-void				Form::setExecutingGrade(uint executingGrade)
+void				Form::setExecutingGrade(uint executingGrade) throw(Form::gradeTooHighexception, Form::gradeTooLowexception)
 {
 	if (executingGrade < Form::gradeMax)
 		throw Form::gradeTooHighexception();
