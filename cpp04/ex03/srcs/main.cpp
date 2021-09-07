@@ -27,6 +27,8 @@ int main()
 	std::cout << std::endl << "--Create and equip ICE--" << std::endl;
     tmp = src->createMateria("ice");
     me->equip(tmp);
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
 
 	std::cout << std::endl << "--Create and equip CURE--" << std::endl;
     tmp = src->createMateria("cure");
@@ -40,7 +42,9 @@ int main()
     me->use(2, *bob);
     me->use(3, *bob);
     me->use(4, *bob);
-
+	std::cout << std::endl << "--Unequip materia--" << std::endl;
+	me->unequip(0);
+	me->unequip(0);
 	std::cout << std::endl << "--Deleting characters" << std::endl; 
     delete bob;
     delete me;
