@@ -48,10 +48,11 @@ ClapTrap &				ClapTrap::operator=( ClapTrap const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, ClapTrap const & i )
 {
-	o << "ClapTrap " 	<< i.getName() <<std::endl;
-	o << std::setw(10) << "hp: "		<< i.getHp() <<std::endl;
-	o << std::setw(10) << "ep: "		<< i.getHp() <<std::endl;
-	o << std::setw(10) << "attack: "	<< i.getAttack() <<std::endl;
+	o << "ClapTrap "	<< std::endl; 
+	o << std::setw(10)	<< "name : "		<< i.getName() <<std::endl;
+	o << std::setw(10)	<< "hp : "		<< i.getHp() <<std::endl;
+	o << std::setw(10)	<< "ep : "		<< i.getHp() <<std::endl;
+	o << std::setw(10)	<< "attack : "	<< i.getAttack() <<std::endl;
 	return o;
 }
 
@@ -65,6 +66,7 @@ void		ClapTrap::attack(std::string & target)
 	std::cout << "ClapTrap " << this->_name << " attack " 
 		<< target << ", causing " << this->_attack << " points of damage!" << std::endl;
 }
+
 void		ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << this->_name << " take " 

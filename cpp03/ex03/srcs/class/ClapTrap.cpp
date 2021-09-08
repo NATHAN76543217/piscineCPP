@@ -71,6 +71,7 @@ void		ClapTrap::attack(ClapTrap & target) const
 		<< target._name << ", causing " << this->_attack << " points of damage!" << std::endl;
 	target.takeDamage(this->_attack);
 }
+
 void		ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << this->_name << " take " 

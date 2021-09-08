@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap()
 {
 	std::cout << "FragTrap: default constructor" << std::endl << std::endl;
 }
@@ -36,13 +36,13 @@ FragTrap::~FragTrap()
 
 std::ostream &			operator<<( std::ostream & o, FragTrap const & i )
 {
-	o << "FragTrap " 	<< i.getName()	<< std::endl;
-	o << std::setw(10)	<< "hp: "		<< i.getHp() <<std::endl;
-	o << std::setw(10)	<< "ep: "		<< i.getEp() <<std::endl;
-	o << std::setw(10)	<< "attack: "	<< i.getAttack() <<std::endl;
+	o << "FragTrap "	<< std::endl; 
+	o << std::setw(10)	<< "name : "	<< i.getName() <<std::endl;
+	o << std::setw(10)	<< "hp : "		<< i.getHp() <<std::endl;
+	o << std::setw(10)	<< "ep : "		<< i.getHp() <<std::endl;
+	o << std::setw(10)	<< "attack : "	<< i.getAttack() <<std::endl;
 	return o;
 }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------

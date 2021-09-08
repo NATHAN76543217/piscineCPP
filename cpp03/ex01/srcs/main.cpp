@@ -3,6 +3,7 @@
 int main()
 {
 	std::string target("The Gate Keeper");
+	ScavTrap s1;
 	ScavTrap scav("Jack");
 	ScavTrap joe(scav);
 	ClapTrap clap("Jane");

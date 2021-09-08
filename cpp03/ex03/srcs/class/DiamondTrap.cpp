@@ -56,7 +56,8 @@ DiamondTrap &				DiamondTrap::operator=( DiamondTrap const & rhs )
 std::ostream &			operator<<( std::ostream & o, DiamondTrap const & i )
 {
 	o << "DiamondTrap " << std::endl;
-	i.whoAmI();
+	o << std::setw(10)	<< "name: "		<< i.getName() << std::endl;
+	o << std::setw(10)	<< "CT_name: "	<< i.ClapTrap::getName() << std::endl;
 	o << std::setw(10)	<< "hp: "		<< i.getHp() <<std::endl;
 	o << std::setw(10)	<< "ep: "		<< i.getEp() <<std::endl;
 	o << std::setw(10)	<< "attack: "	<< i.getAttack() <<std::endl;
