@@ -1,4 +1,5 @@
 .vscode
+.DS_store
 Rcpp*
 objs/
 
@@ -20,3 +21,4 @@ test
 R00
 R01
 R02
+R03

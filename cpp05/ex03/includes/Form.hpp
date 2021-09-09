@@ -47,13 +47,14 @@ class Form
 		Form();
 		Form(std::string name, uint signingGrade, uint executingGrade);
 		Form( Form const & src );
-		~Form();
+		virtual ~Form();
 
 		Form &		operator=( Form const & rhs );
 
 		void				beSigned(Bureaucrat const & B) throw (Form::gradeTooLowException, Form::alreadySignedException);
 		void				checkAllowance(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned);
 		virtual void		execute(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned) = 0;
+		virtual Form*		create(std::string target) const = 0;
 
 		bool		isSigned( void ) const;
 		std::string	getName( void ) const;

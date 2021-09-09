@@ -55,6 +55,11 @@ void		PresidentialPardonForm::execute(Bureaucrat const & B) const
 	std::cout << this->_target << " a été pardonnée par Zafod Beeblebrox." << std::endl;
 }
 
+Form*			PresidentialPardonForm::create(std::string target) const
+{
+	return new PresidentialPardonForm(target);
+}
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

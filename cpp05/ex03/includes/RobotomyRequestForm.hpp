@@ -21,6 +21,7 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
 
 		void		execute(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned);
+		Form*		create(std::string target) const;
 
 	private:
 

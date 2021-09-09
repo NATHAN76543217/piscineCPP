@@ -72,6 +72,11 @@ void		RobotomyRequestForm::execute(Bureaucrat const & B) const
 	}
 }
 
+Form*			RobotomyRequestForm::create(std::string target) const
+{
+	return new RobotomyRequestForm(target);
+}
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

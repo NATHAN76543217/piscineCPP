@@ -1,38 +1,40 @@
 #include "Bureaucrat.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main()
 {
-	Bureaucrat	bob("bob", 100);
-	Form		f1;
-	Form		f2("Beauty", 10, 20);
-	Form		f3("Good", 120, 150);
+	Bureaucrat	k("ksos", 145);
+	Bureaucrat	bob("bob", 70);
+	Bureaucrat	bg("beau gosse", 1);
+	RobotomyRequestForm		R1;
+	ShrubberyCreationForm	S1("my_beautiful");
+	PresidentialPardonForm	P1("this damn brat");
 
-	std::cout << std::endl << "---announce---" << std::endl;
+	std::cout << R1 << std::endl;
+	std::cout << S1 << std::endl;
+	std::cout << P1 << std::endl;
 
-	std::cout << bob << std::endl;
-	std::cout << f1 << std::endl;
-	std::cout << f2 << std::endl;
-	std::cout << f3 << std::endl;
+	std::cout << "--- S1 ---" <<std::endl;
+	k.signForm(S1);
+	k.executeForm(S1);
+	
+	bg.executeForm(S1);
+	std::cout << "--- R1 ---" <<std::endl;
 
-	std::cout << std::endl << "---exceptions---" << std::endl;
+	k.signForm(R1);
+	bob.signForm(R1);
+	std::cout << std::endl;
 
-
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	std::cout << std::endl << "---sign---" << std::endl;
-	bob.signForm(f2);	
-	bob.signForm(f3);
-	bob.signForm(f3);
-
-	std::cout << std::endl << "---test copy/assign---" << std::endl;
-	Form f6(f3);
-	std::cout << f6 << std::endl;
-	Form f7;
-	f7 = f6;
-	std::cout << f7 << std::endl;
-
+	bob.executeForm(R1);
+	bg.executeForm(R1);
+	std::cout << std::endl << "--- P1 ---" <<std::endl;
+	bg.executeForm(P1);
+	bg.signForm(P1);
+	bg.signForm(P1);
+	bg.executeForm(P1);
+	std::cout << std::endl << std::endl;
 
 	return 0;
 }

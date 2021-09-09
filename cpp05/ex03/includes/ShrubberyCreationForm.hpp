@@ -26,10 +26,12 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );
 
 		void		execute(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned);
+		Form*		create(std::string target) const;
 
 		static const std::string	tree[];
 		static const uint			treeByRow;
 		static const uint			rowByTree;
+		
 	private:
 
 };

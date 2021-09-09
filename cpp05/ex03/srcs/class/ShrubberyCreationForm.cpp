@@ -1,5 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
 
+/*
+** ------------------------------- STATICS --------------------------------
+*/
 
 const uint			ShrubberyCreationForm::treeByRow = 3;
 const uint			ShrubberyCreationForm::rowByTree = 12;
@@ -89,6 +92,11 @@ void				ShrubberyCreationForm::execute(Bureaucrat const & B) const
 	}
 	file.flush();
 	file.close();
+}
+
+Form*			ShrubberyCreationForm::create(std::string target) const
+{
+	return new ShrubberyCreationForm(target);
 }
 
 /*
