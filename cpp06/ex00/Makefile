@@ -11,8 +11,8 @@ PATH_CLASS	=	class
 
 # List of sources
 SRCS_FILES	= 	main.cpp
-SRCS_CLASS	= 	Base.cpp A.cpp B.cpp C.cpp 
-INC_FILES	=	Base.hpp A.hpp B.hpp C.hpp 
+SRCS_CLASS	= 	
+INC_FILES	=	
 
 SRCS		=	$(addprefix $(), $(SRCS_FILES) $(addprefix $(PATH_CLASS)/, $(SRCS_CLASS)))
 OBJS		=	$(addprefix $(PATH_OBJ), $(SRCS:%.cpp=%.o))

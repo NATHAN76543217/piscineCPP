@@ -1,37 +1,106 @@
 #include <string>
 #include <iostream>
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
-typedef	struct	s_data
+Base*	generate( void )
 {
-	int		age;
-}			Data;
+	Base*	base_ptr = nullptr;
 
-uintptr_t	serialize(Data* ptr)
-{
-	return reinterpret_cast<uintptr_t>(ptr);
+	switch (std::rand() % 3)
+	{
+		case 0:
+			base_ptr = new A();
+			break ;
+		case 1:
+			base_ptr = new B();
+			break ;
+		case 2:
+			base_ptr = new C();
+			break ;
+		default:
+			std::cout << "unhandled index" << std::endl;
+			break;
+	}
+	return base_ptr;
 }
 
-Data	*deserialize(uintptr_t raw) {
-	return reinterpret_cast<Data *>(raw);
+void	identify( Base *p)
+{
+	A* a = dynamic_cast<A*>(p);
+	B* b = dynamic_cast<B*>(p);
+	C* c = dynamic_cast<C*>(p);
+	std::cout << "type is: " ;
+	if (a)
+		std::cout << "A" << std::endl;
+	else if (b)
+		std::cout << "B" << std::endl;
+	else if (c)
+		std::cout << "C" << std::endl;
+	else
+		std::cerr << "unknow type" << std::endl;
+	return ;
 }
+
+void	identify( Base &p)
+{
+	std::cout << "type is: " ;
+	try 
+	{
+		A& a = dynamic_cast<A&>(p);
+		(void)a;
+		std::cout << "A" << std::endl;
+		return ;
+	} 
+	catch(std::bad_cast const &e)
+	{
+	}
+	try 
+	{
+		B& b = dynamic_cast<B&>(p);
+		(void)b;
+		std::cout << "B" << std::endl;
+		return ;
+	} 
+	catch(std::bad_cast const &e)
+	{
+	}
+	try 
+	{
+		C& c = dynamic_cast<C&>(p);
+		(void)c;
+		std::cout << "C" << std::endl;
+		return ;
+	} 
+	catch(std::bad_cast const &e)
+	{
+		std::cerr << "unknow  type" << std::endl;
+	}
+	return ;
+}
+
 
 int		main()
 {
-	Data	data;
-	Data	*unserialized;
-	uintptr_t serialized;
+	std::srand(std::time(NULL));
 
-	std::cout << "Init Data struct with data.age = 5" << std::endl;
-	data.age = 5;
-	serialized = serialize(&data);
-	std::cout << "data address = " << &data << std::endl;
-	std::cout << "serialized = " << serialized << std::endl;
-	unserialized = deserialize(serialized);
-	std::cout << "unserialized = " << unserialized << std::endl;
-	if (unserialized == &data 
-		&& data.age == unserialized->age)
-		std::cout << "SUCCESS" << std::endl;
-	else
-		std::cout << "FAILURE" << std::endl;
+	Base *b1 = generate();
+	Base *b2 = generate();
+	Base *b3 = generate();
+	std::cout << std::endl << "--pointers--" << std::endl;
+	identify(b1);
+	identify(b2);
+	identify(b3);
+
+	std::cout << std::endl << "--references--" << std::endl;
+	identify(*b1);
+	identify(*b2);
+	identify(*b3);
+
+	std::cout << std::endl;
+	delete b1;
+	delete b2;
+	delete b3;
 	return EXIT_SUCCESS;
 }

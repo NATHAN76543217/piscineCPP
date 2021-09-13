@@ -1,79 +1,37 @@
-# include <iostream>
-# include <string>
-#include <iomanip>
+#include <string>
+#include <iostream>
 
-void	toChar(std::string raw)
+typedef	struct	s_data
 {
-	try {
-		char cval;
-		if (raw.length() == 1 && raw.at(0))
-			cval = static_cast<char>(raw.at(0));
-		else
-			cval = static_cast<char>(std::stoi(raw));
-		if (isprint(cval))
-			std::cout << "char: '" << cval << "'" << std::endl;
-		else
-			std::cout << "char: Non displayable" << std::endl;
-	}
-	catch(std::exception & e)
-	{
-		std::cout << "char: impossible" << std::endl;
-	}
+	int		age;
+}			Data;
+
+uintptr_t	serialize(Data* ptr)
+{
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 
-void		toInt(std::string val)
-{
-	try
-	{
-		int res = std::stoi(val);
-		std::cout << "int: " << static_cast<int>(res) << std::endl;
-		
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << "int: impossible" << std::endl;
-	}
+Data	*deserialize(uintptr_t raw) {
+	return reinterpret_cast<Data *>(raw);
 }
 
-void		toFloat(std::string val)
+int		main()
 {
-	try
-	{
-		float valf = std::stof(val);
-		std::cout << std::fixed << std::setprecision(1) << "float: " << valf << "f" << std::endl;
-		
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << "float: impossible" << std::endl;
-	}
-	
-}
+	Data	data;
+	Data	*unserialized;
+	uintptr_t serialized;
 
-void		toDouble(std::string val)
-{
-	try {
-		double vald = static_cast<double>(std::stod(val));
-		std::cout << std::fixed << std::setprecision(1) << "double: " << vald << std::endl;
-	}
-	catch(std::exception & e)
-	{
-		std::cout << "double: impossible" << std::endl;
-	}
-}
-
-int		main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		std::cout << av[0] << " cppLitteralValue" << std::endl;
-		return EXIT_FAILURE;
-	}
-	std::string value(av[1]);
-
-	toChar(value);
-	toInt(value);
-	toFloat(value);
-	toDouble(value);
+	std::cout << "Init Data struct with data.age = 5" << std::endl;
+	data.age = 5;
+	serialized = serialize(&data);
+	std::cout << "data address = " << &data << std::endl;
+	std::cout << "serialized = " << serialized << std::endl;
+	unserialized = deserialize(serialized);
+	std::cout << "unserialized = " << unserialized << std::endl;
+	if (unserialized == &data 
+		&& data.age == unserialized->age)
+		std::cout << "SUCCESS" << std::endl;
+	else
+		std::cout << "FAILURE" << std::endl;
 	return EXIT_SUCCESS;
 }
