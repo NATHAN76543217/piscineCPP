@@ -22,7 +22,7 @@ DIRS_LIST	=	$(PATH_CLASS)
 # Commands of compilation
 COMP		=	clang++
 # COMP_LIB	=	-lc++
-COMP_FLAG	=	-Wall -Werror -Wextra --std=c++98 -Wshadow -I$(PATH_INC) $(COMP_LIB)
+COMP_FLAG	=	-Wall -Werror -Wextra --std=c++98 -I$(PATH_INC) $(COMP_LIB)
 COMP_DEB	=	-g3 -fsanitize=address
 
 # Others Command
