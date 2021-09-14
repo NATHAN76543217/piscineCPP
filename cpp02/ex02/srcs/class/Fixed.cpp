@@ -4,8 +4,8 @@
 ** ------------------------------- STATIC --------------------------------
 */
 
-const int Fixed::_floatingPart = 8;
-const float Fixed::_e = 1 << Fixed::_floatingPart;
+const int	Fixed::_floatingPart = 8;
+const float	Fixed::_e = 1 << Fixed::_floatingPart;
 
 float 	Fixed::getEpsilon()
 {
