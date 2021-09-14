@@ -5,28 +5,32 @@
 int main()
 {
 	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-
-	const WrongAnimal* w = new WrongCat();
+	const Animal* d = new Dog();
+	const Animal* c = new Cat();
+	const WrongAnimal* wa = new WrongAnimal();
+	const WrongAnimal* wc = new WrongCat();
 	
 	std::cout << std::endl << "Types:" << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << c->getType() << " " << std::endl;
+	std::cout << d->getType() << " " << std::endl;
 	std::cout << meta->getType() << " " << std::endl;
-	std::cout << w->getType() << " " << std::endl;
+	std::cout << wa->getType() << " " << std::endl;
+	std::cout << wc->getType() << " " << std::endl;
 	
 	std::cout << std::endl << "Sounds:" << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
+	c->makeSound(); //will output the cat sound!
+	d->makeSound();
 	meta->makeSound();
 
 	std::cout << std::endl << "Test with wrong class:" << std::endl;
-	w->makeSound();
+	wa->makeSound();
+	wc->makeSound();
 
+	std::cout << std::endl;
 	delete meta;
-	delete j;
-	delete i;
-	delete w;
+	delete d;
+	delete c;
+	delete wa;
+	delete wc;
 	return (0);
 }

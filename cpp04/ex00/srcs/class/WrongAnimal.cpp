@@ -6,12 +6,12 @@
 
 WrongAnimal::WrongAnimal() : _type("default")
 {
-	std::cout << "WrongAnimal constructor() called" << std::endl;
+	std::cout << "WrongAnimal default constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal( const WrongAnimal & src ) : _type(src._type)
 {
-	std::cout << "WrongAnimal constructor(WrongAnimal) called" << std::endl;
+	std::cout << "WrongAnimal copy constructor called" << std::endl;
 }
 
 

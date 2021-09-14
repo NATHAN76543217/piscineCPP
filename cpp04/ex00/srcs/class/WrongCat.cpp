@@ -7,12 +7,12 @@
 WrongCat::WrongCat() : WrongAnimal()
 {
 	this->_type = "WrongCat";
-	std::cout << "WrongCat constructor() called" << std::endl;
+	std::cout << "WrongCat default constructor called" << std::endl;
 }
 
 WrongCat::WrongCat( const WrongCat & src ) : WrongAnimal(src)
 {
-	std::cout << "WrongCat constructor(WrongCat) called" << std::endl;
+	std::cout << "WrongCat copy constructor called" << std::endl;
 }
 
 

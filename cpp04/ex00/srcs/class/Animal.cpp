@@ -6,12 +6,12 @@
 
 Animal::Animal() : _type("default")
 {
-	std::cout << "Animal constructor() called" << std::endl;
+	std::cout << "Animal default constructor called" << std::endl;
 }
 
 Animal::Animal( const Animal & src ) : _type(src._type)
 {
-	std::cout << "Animal constructor(Animal) called" << std::endl;
+	std::cout << "Animal copy constructor called" << std::endl;
 }
 
 
@@ -45,7 +45,6 @@ Animal &				Animal::operator=( Animal const & rhs )
 
 void			Animal::makeSound( void ) const
 {
-	// std::cout << "coucou" << std::endl;
 }
 
 /*

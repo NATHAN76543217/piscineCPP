@@ -7,12 +7,12 @@
 Cat::Cat() : Animal()
 {
 	this->_type = "Cat";
-	std::cout << "Cat constructor() called" << std::endl;
+	std::cout << "Cat default constructor called" << std::endl;
 }
 
 Cat::Cat( const Cat & src ) : Animal(src)
 {
-	std::cout << "Cat constructor(Cat) called" << std::endl;
+	std::cout << "Cat copy constructor called" << std::endl;
 }
 
 

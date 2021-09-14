@@ -18,8 +18,6 @@ int main()
 		Animal	test;
 		test.makeSound();
 	}
-
-
 	cat.setIdea(1, "despise some human");
 	dog.setIdea(1, "run after my tail!");
 	std::cout << std::endl << "__init_dogs__" << std::endl;
@@ -34,9 +32,12 @@ int main()
 		std::cout << std::endl << "[i] = "<< i << std::endl;
 		Animals[i++] = new Cat(cat);
 	}
-	cat.setIdea(1, "I changed my mind");
 	dog.setIdea(1, "seat down");
+	std::cout << std::endl << "__create a last different cat__" << std::endl << std::endl;
+	cat.setIdea(1, "I changed my mind");
+	cat.setIdea(2, "I'm the last");
 	Animals[i] = new Cat(cat); 
+
 	std::cout << std::endl << "__deleting_array__" << std::endl << std::endl;
 	for (i = 0; i < NB_ANIMALS; i++)
 	{

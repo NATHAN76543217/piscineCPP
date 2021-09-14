@@ -101,21 +101,35 @@ void		Character::equip( AMateria* m)
 
 void		Character::unequip( int idx )
 {
-	if (idx < 0 || (uint)idx > Character::maxMaterias || this->_materia[idx] == NULL)
+	if (idx >= 0 || (uint)idx <= Character::maxMaterias)
 	{
-		std::cout << this->_name << " cannot unequip: inventory empty at this slot(" << idx << ")" << std::endl; 
-		return ;
+		if (this->_materia[idx] != NULL)
+		{
+			std::cout << this->_name << " unequiped with " << this->_materia[idx]->getType() << std::endl; 
+			// delete this->_materia[idx];
+			this->_materia[idx] = NULL;
+			this->_equiped--;
+		}
+		else
+			std::cout << this->_name << " Cannot unequip: empty inventory on slot(" << idx << ")" << std::endl; 
 	}
-	std::cout << this->_name << " unequiped with " << this->_materia[idx]->getType() << std::endl; 
-	// delete this->_materia[idx];
-	this->_materia[idx] = NULL;
-	this->_equiped--;
+	else
+		std::cout << this->_name << " Cannot unequip: inventory empty at this slot(" << idx << ")" << std::endl; 
+	return ;
 }
 
 void		Character::use( int idx, ICharacter& target)
 {
-	if (idx >= 0 && (uint)idx < Character::maxMaterias && this->_materia[idx] != NULL)
-		this->_materia[idx]->use(target);
+	if (idx >= 0 && (uint)idx < Character::maxMaterias)
+	{
+		if (this->_materia[idx] != NULL)
+			this->_materia[idx]->use(target);
+		else
+			std::cout << "Cannot use materia: No materia equiped at this slot(" << idx << ")" << std::endl;
+	}
+	else {
+		std::cout << "Cannot use materia: Index " << idx << " out of range [0-3]" << std::endl;
+	}
 }
 
 void		Character::_init_materias( void )

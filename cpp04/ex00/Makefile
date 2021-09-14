@@ -21,13 +21,11 @@ DIRS_LIST	=	$(PATH_CLASS)
 
 # Commands of compilation
 COMP		=	clang++
-# COMP_LIB	=	-lc++
 COMP_FLAG	=	-Wall -Werror -Wextra --std=c++98 -Wshadow -I$(PATH_INC) $(COMP_LIB)
 COMP_DEB	=	-g3 -fsanitize=address
 
 # Others Command
 RM			=	/bin/rm
-# SETLIST		=	set -x;
 
 # Color Code and template code
 _YELLOW		=	\033[38;5;184m
@@ -44,16 +42,12 @@ init:
 	@ mkdir -p $(addprefix $(PATH_OBJ)/, $(DIRS_LIST))
 
 $(NAME): $(OBJS) $(INCS)
-	@ $(SETLIST) $(COMP) $(COMP_FLAG) -o $(NAME) $(OBJS)
+	@  $(COMP) $(COMP_FLAG) -o $(NAME) $(OBJS)
 	@ echo "$(_INFO) linking of $(NAME)"
 
 $(PATH_OBJ)%.o : $(PATH_SRC)%.cpp  $(INCS)
-	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
+	@ (  $(COMP) $(COMP_FLAG) -c $< -o $@ )
 	@ echo "$(_INFO) Compilation of $*"
-
-# $(PATH_OBJ)%.o : $(PATH_SRC)%.cpp  $(INCS)
-# 	@ ( $(SETLIST) $(COMP) $(COMP_FLAG) -c $< -o $@ )
-# 	@ echo "$(_INFO) Compilation of $*"
 
 clean:
 	@ $(RM) -rf $(PATH_OBJ)

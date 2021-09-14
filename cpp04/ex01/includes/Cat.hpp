@@ -2,6 +2,7 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -16,8 +17,8 @@ class Cat : public Animal
 
 		void		makeSound( void ) const;
 		
-		std::string	getIdea( unsigned int const i ) const;
 		void		setIdea( unsigned int const i, std::string idea);
+		std::string	getIdea( unsigned int const i ) const;
 
 	private:
 		Brain*		_brain;

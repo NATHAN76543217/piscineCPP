@@ -27,6 +27,11 @@ Brain::Brain( const Brain & src )
 
 Brain::~Brain()
 {
+	std::cout << std::endl << "My thought was:" << std::endl;
+	std::cout << "- " << this->getIdea(0);
+	std::cout << std::endl << "- " << this->getIdea(1);
+	std::cout << std::endl << "- " << this->getIdea(2) << std::endl 
+	<< "..." << std::endl;
 	std::cout << "Brain destructor" << std::endl;
 }
 

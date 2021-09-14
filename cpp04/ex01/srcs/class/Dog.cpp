@@ -26,8 +26,6 @@ Dog::Dog( const Dog & src ) : Animal(src)
 
 Dog::~Dog()
 {
-	std::cout << std::endl << "My tough was:" << std::endl << this->_brain->getIdea(0);
-	std::cout << std::endl << this->_brain->getIdea(1) << std::endl;
 	if (this->_brain != NULL)
 		delete this->_brain;
 	std::cout << "Dog destructor called" << std::endl;
