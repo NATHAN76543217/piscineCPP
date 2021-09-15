@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <string>
+# include <vector>
+# include <algorithm>
 
 class Span
 {
@@ -14,10 +16,19 @@ class Span
 		}
 	};
 
+	class NotSpannableException : public std::exception
+	{
+		virtual const char *what(void ) const throw()
+		{
+			return "Span is not spannable";
+		}
+	};
+
 	public:
 
 		Span();
 		Span( uint N );
+		Span( std::vector<int>::const_iterator start, std::vector<int>::const_iterator end );
 		Span( Span const & src );
 		~Span();
 
@@ -26,11 +37,13 @@ class Span
 		uint	getSize( void ) const;
 
 		void	addNumber(int number);
-		int		shortestSpan( void ) const;
-		int		longestSpan( void ) const;
+		int		shortestSpan( void );
+		int		longestSpan( void );
+		bool	spannable( void ) const;
+
 	private:
-		int		*_values;
-		uint	_size;
+		std::vector<int>	_values;
+		uint				_limit;
 
 };
 

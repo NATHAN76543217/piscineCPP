@@ -3,7 +3,7 @@
 # include <algorithm>
 
 template<typename T>
-int	easyfind(T cnt, int find) 
+bool	easyfind(T cnt, int find) 
 {
 	typename T::const_iterator it;
 	it = std::find(cnt.begin(), cnt.end(), find);
