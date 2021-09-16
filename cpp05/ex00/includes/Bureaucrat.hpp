@@ -6,22 +6,22 @@
 
 class Bureaucrat
 {
+	public:
+		class GradeTooHighException : public std::exception
+		{
+			const char * what () const throw ()
+			{
+				return "This grade is too high for a Bureaucrate";
+			}
+		};
 
-	class GradeTooHighException : public std::exception
-	{
-		const char * what () const throw ()
-    	{
-	    	return "This grade is too high for a Bureaucrate";
-    	}
-	};
-
-	class GradeTooLowException : public std::exception
-	{
-		virtual const char * what () const throw ()
-	    {
-	    	return "This grade is too low for a Bureaucrate";
-	    }
-	};
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char * what () const throw ()
+			{
+				return "This grade is too low for a Bureaucrate";
+			}
+		};
 
 	public:
 
@@ -30,14 +30,12 @@ class Bureaucrat
 		Bureaucrat( Bureaucrat const & src );
 		~Bureaucrat();
 
-		// Bureaucrat &		operator=( Bureaucrat const & rhs );
-
-
 		void				promote( void );
 		void				retrograde( void );
 	
-		std::string	const &	getName( void ) const;
 		uint				getGrade( void ) const;
+		std::string	const &	getName( void ) const;
+		
 		void				setGrade( uint const grade ) throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException);
 		
 		static const uint			gradeMax;

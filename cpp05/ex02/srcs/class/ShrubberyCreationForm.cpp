@@ -55,15 +55,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-ShrubberyCreationForm &				ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
-{
-	if ( this != &rhs )
-	{
-		Form::operator=(rhs);
-	}
-	return *this;
-}
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */

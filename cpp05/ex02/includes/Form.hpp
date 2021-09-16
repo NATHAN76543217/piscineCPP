@@ -49,34 +49,34 @@ class Form
 		Form( Form const & src );
 		~Form();
 
-		Form &		operator=( Form const & rhs );
+		Form &				operator=( Form const & rhs );
 
 		void				beSigned(Bureaucrat const & B) throw (Form::gradeTooLowException, Form::alreadySignedException);
 		void				checkAllowance(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned);
 		virtual void		execute(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned) = 0;
 
-		bool		isSigned( void ) const;
-		std::string	getName( void ) const;
-		std::string	getTarget( void ) const;
-		uint		getSigningGrade( void ) const;
-		uint		getExecutingGrade( void ) const;
+		bool				isSigned( void ) const;
+		std::string			getName( void ) const;
+		std::string			getTarget( void ) const;
+		uint				getSigningGrade( void ) const;
+		uint				getExecutingGrade( void ) const;
 
-		void		setSigningGrade( uint signingGrade)
-						throw(Form::gradeTooHighException, Form::gradeTooLowException);
-		void		setExecutingGrade( uint executingGrade)
-						throw(Form::gradeTooHighException, Form::gradeTooLowException);
-		void		setTarget( std::string target );
+		void				setSigningGrade( uint signingGrade)
+								throw(Form::gradeTooHighException, Form::gradeTooLowException);
+		void				setExecutingGrade( uint executingGrade)
+								throw(Form::gradeTooHighException, Form::gradeTooLowException);
+		void				setTarget( std::string target );
 
 		static const uint			gradeMax;
 		static const uint			gradeMin;
 		static const std::string	defaultName;
 
 	protected:
-		std::string	_name;
-		bool		_signed;
-		uint		_signing_grade;
-		uint		_executing_grade;
-		std::string	_target;
+		std::string		_name;
+		bool			_signed;
+		uint			_signing_grade;
+		uint			_executing_grade;
+		std::string		_target;
 
 };
 

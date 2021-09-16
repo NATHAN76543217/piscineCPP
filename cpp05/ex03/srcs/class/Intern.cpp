@@ -61,7 +61,9 @@ std::ostream &			operator<<( std::ostream & o, Intern const & i )
 Form*			Intern::makeForm(std::string formName, std::string target) const 
 	throw(Intern::unknowFormRequest)
 {
-	uint i;
+	uint	i;
+	Form	*form = NULL;
+
 	for (i = 0; i < this->nbRequestKnow; i++)
 	{
 		if (this->knowRequestName[i] == formName)
@@ -70,15 +72,19 @@ Form*			Intern::makeForm(std::string formName, std::string target) const
 	switch (i)
 	{
 		case 0:
-			return new RobotomyRequestForm(target);
+			form = new RobotomyRequestForm(target);
+			break ;
 		case 1:
-			return new PresidentialPardonForm(target);
+			form = new PresidentialPardonForm(target);
+			break ;
 		case 2:
-			return new ShrubberyCreationForm(target);
+			form = new ShrubberyCreationForm(target);
+			break ;
 		default:
 			throw Intern::unknowFormRequest();
 	}
-	return NULL;
+	std::cout << "Intern creates an " << formName << " form." << std::endl;
+	return form;
 }
 
 /*

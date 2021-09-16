@@ -8,13 +8,14 @@
 
 class ShrubberyCreationForm : public Form
 {
-	class fileNotOpened : public std::exception
-	{
-		virtual const char *what() const throw()
+	public:
+		class fileNotOpened : public std::exception
 		{
-			return "target file cannot be openned";
-		}
-	};
+			virtual const char *what() const throw()
+			{
+				return "target file cannot be openned";
+			}
+		};
 
 	public:
 
@@ -22,8 +23,6 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm(std::string name);
 		ShrubberyCreationForm( ShrubberyCreationForm const & src );
 		~ShrubberyCreationForm();
-
-		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );
 
 		void		execute(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned);
 

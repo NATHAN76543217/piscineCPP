@@ -72,6 +72,7 @@ Form &				Form::operator=( Form const & rhs )
 std::ostream &			operator<<( std::ostream & o, Form const & i )
 {
 	o << "name : " << i.getName() << std::endl;
+	o << "target: " << i.getTarget() << std::endl;
 	o << "signed : " << i.isSigned() << std::endl;
 	o << "Signing grade : " << i.getSigningGrade() << std::endl;
 	o << "Executing grade : " << i.getExecutingGrade() << std::endl;

@@ -45,16 +45,6 @@ Bureaucrat::~Bureaucrat()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-// Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
-// {
-	// if ( this != &rhs )
-	// {
-		// this->_name = rhs._name;
-		// this->setGrade(rhs._grade);
-	// }
-	// return *this;
-// }
-
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & B )
 {
 	o << B.getName() << ", Bureaucrat grade " << B.getGrade() << ".";

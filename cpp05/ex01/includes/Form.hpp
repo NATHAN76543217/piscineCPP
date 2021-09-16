@@ -9,21 +9,22 @@ class Bureaucrat;
 
 class Form
 {
-	class gradeTooHighexception : public std::exception
-	{
-		virtual const char *what() const throw()
+	public :
+		class gradeTooHighexception : public std::exception
 		{
-			return "This grade is too high for this Form";
-		}
-	};
+			virtual const char *what() const throw()
+			{
+				return "This grade is too high for this Form";
+			}
+		};
 
-	class gradeTooLowexception : public std::exception
-	{
-		virtual const char *what() const throw()
+		class gradeTooLowexception : public std::exception
 		{
-			return "This grade is too low for this Form";
-		}
-	};
+			virtual const char *what() const throw()
+			{
+				return "This grade is too low for this Form";
+			}
+		};
 
 	public:
 
@@ -35,8 +36,8 @@ class Form
 		Form &		operator=( Form const & rhs );
 
 		void		beSigned(Bureaucrat const & B);
-		bool		isSigned( void ) const;
 
+		bool		isSigned( void ) const;
 		std::string	getName( void ) const;
 		uint		getSigningGrade( void ) const;
 		uint		getExecutingGrade( void ) const;

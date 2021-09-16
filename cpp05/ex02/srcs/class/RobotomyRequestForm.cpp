@@ -35,15 +35,6 @@ RobotomyRequestForm::~RobotomyRequestForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
-{
-	if ( this != &rhs )
-	{
-		Form::operator=(rhs);
-	}
-	return *this;
-}
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */

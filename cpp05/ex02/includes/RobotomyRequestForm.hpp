@@ -18,8 +18,6 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm( RobotomyRequestForm const & src );
 		~RobotomyRequestForm();
 
-		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
-
 		void		execute(Bureaucrat const & B) const throw (Form::gradeTooLowException, Form::formNotSigned);
 
 	private:

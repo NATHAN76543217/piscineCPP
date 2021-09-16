@@ -25,7 +25,6 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
 	try
 	{
 		Form		f5("Bad", 30, 151);
@@ -34,6 +33,7 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+
 	std::cout << std::endl << "---sign---" << std::endl;
 	bob.signForm(f2);	
 	bob.signForm(f3);
@@ -45,7 +45,5 @@ int	main()
 	Form f7;
 	f7 = f6;
 	std::cout << f7 << std::endl;
-
-
 	return 0;
 }

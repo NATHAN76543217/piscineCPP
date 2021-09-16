@@ -15,8 +15,6 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm( PresidentialPardonForm const & src );
 		~PresidentialPardonForm();
 
-		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
-
 		void				execute(Bureaucrat const & B) const throw(Form::gradeTooLowException, Form::formNotSigned);
 
 	private:

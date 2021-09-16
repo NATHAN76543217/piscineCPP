@@ -14,20 +14,20 @@ const	std::string Bureaucrat::defaultName = "default";
 
 Bureaucrat::Bureaucrat() : _name(Bureaucrat::defaultName), _grade(Bureaucrat::gradeMin)
 {
-	std::cout << "Create a Bureaucrat of level " << this->_grade << std::endl;
+	std::cout << "Create a Bureaucrat of level " << this->_grade << " named " << this->_name << std::endl;
 }
 
 Bureaucrat::Bureaucrat( std::string name, uint grade) 
 	throw(Bureaucrat::GradeTooHighException, Bureaucrat::GradeTooLowException ) : _name(name)
 {
 	this->setGrade(grade);
-	std::cout << "Create a Bureaucrat of level " << this->_grade << std::endl;
+	std::cout << "Create a Bureaucrat of level " << this->_grade << " named " << this->_name << std::endl;
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src._name)
 {
 	this->setGrade(src._grade);
-	std::cout << "Create a Bureaucrat of level " << this->_grade << std::endl;
+	std::cout << "Create a Bureaucrat of level " << this->_grade << " named " << this->_name << std::endl;
 }
 
 
@@ -44,16 +44,6 @@ Bureaucrat::~Bureaucrat()
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-
-// Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
-// {
-	// if ( this != &rhs )
-	// {
-		// this->_name = rhs._name;
-		// this->setGrade(rhs._grade);
-	// }
-	// return *this;
-// }
 
 std::ostream &			operator<<( std::ostream & o, Bureaucrat const & B )
 {
