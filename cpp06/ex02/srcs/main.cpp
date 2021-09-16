@@ -88,6 +88,7 @@ int		main()
 	Base *b1 = generate();
 	Base *b2 = generate();
 	Base *b3 = generate();
+	
 	std::cout << std::endl << "--pointers--" << std::endl;
 	identify(b1);
 	identify(b2);
@@ -98,7 +99,7 @@ int		main()
 	identify(*b2);
 	identify(*b3);
 
-	std::cout << std::endl;
+	std::cout << std::endl << "--destroy--" << std::endl;
 	delete b1;
 	delete b2;
 	delete b3;

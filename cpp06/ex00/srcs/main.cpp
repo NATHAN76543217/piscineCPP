@@ -6,7 +6,7 @@ void	toChar(std::string raw)
 {
 	try {
 		char cval;
-		if (raw.length() == 1 && raw.at(0))
+		if (raw.length() == 1 && raw.at(0) && !isnumber(raw.at(0)))
 			cval = static_cast<char>(raw.at(0));
 		else
 			cval = static_cast<char>(std::stoi(raw));
@@ -66,7 +66,7 @@ int		main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << av[0] << " cppLitteralValue" << std::endl;
+		std::cout << "Bad argument:" << std::endl << av[0] << " cppLitteralValue" << std::endl;
 		return EXIT_FAILURE;
 	}
 	std::string value(av[1]);

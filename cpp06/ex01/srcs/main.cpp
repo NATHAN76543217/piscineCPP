@@ -17,17 +17,17 @@ Data	*deserialize(uintptr_t raw) {
 
 int		main()
 {
-	Data	data;
-	Data	*unserialized;
-	uintptr_t serialized;
+	Data		data;
+	Data		*unserialized;
+	uintptr_t	serialized;
 
-	std::cout << "Init Data struct with data.age = 5" << std::endl;
+	std::cout << "Init value = 5" << std::endl;
 	data.age = 5;
 	serialized = serialize(&data);
 	std::cout << "data address = " << &data << std::endl;
-	std::cout << "serialized = " << serialized << std::endl;
+	std::cout << "serialized value = " << serialized << std::endl;
 	unserialized = deserialize(serialized);
-	std::cout << "unserialized = " << unserialized << std::endl;
+	std::cout << "unserialized addresse= " << unserialized << std::endl;
 	if (unserialized == &data 
 		&& data.age == unserialized->age)
 		std::cout << "SUCCESS" << std::endl;

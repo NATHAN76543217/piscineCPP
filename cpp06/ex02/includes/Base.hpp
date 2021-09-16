@@ -6,15 +6,8 @@
 
 class Base
 {
-
 	public:
-
 		virtual ~Base();
-
-
-
-	private:
-
 };
 
 #endif /* ************************************************************ BASE_H */
