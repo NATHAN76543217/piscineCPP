@@ -7,15 +7,18 @@ int main()
 	Array<int>    	arr_3(5);
 	Array<int>    	arr_4(2);
 
-	std::cout << "size 1: " << arr_1.size() << std::endl;
+	std::cout << "size arr_1: " << arr_1.size() << std::endl;
 	std::cout << arr_1 << std::endl << std::endl;
-	std::cout << "size 2: " << arr_2.size() << std::endl;
+	std::cout << "size arr_2: " << arr_2.size() << std::endl;
 	std::cout << arr_2 << std::endl << std::endl;
-	std::cout << "size 3: " << arr_3.size() << std::endl;
+	std::cout << "size arr_3: " << arr_3.size() << std::endl;
 	std::cout << arr_3 << std::endl;
 	
 	arr_3[3] = 5;
+	std::cout << std::endl << "(arr_3[3] = 5)" << std::endl;
 	std::cout << arr_3 << std::endl;
+	
+	std::cout << std::endl << "test exceptions" << std::endl;
 	try
 	{
 		std::cout << "arr_3[7] = " << arr_3[7] << std::endl << std::endl;
@@ -24,10 +27,14 @@ int main()
 	{
 		std::cerr << e.what() << std::endl << std::endl;
 	}
+
 	arr_4 = arr_3;
 	arr_4[1] = 2;
+	std::cout << std::endl << "(arr_4[1] = 2)" << std::endl;
 	std::cout << "size 4: " << arr_3.size() << std::endl;
 	std::cout << arr_4 << std::endl << std::endl;
+
+	std::cout << std::endl << "operator copy:" << std::endl;
 	Array<int>   arr_5(arr_4);
 	std::cout << "size 5: " << arr_3.size() << std::endl;
 	std::cout << arr_5 << std::endl;

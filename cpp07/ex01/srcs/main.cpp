@@ -13,24 +13,35 @@ void    strUpper(std::string & str)
 int main( void )
 {
     int array[4] = {0, 1, 2, 3};
+    
+    std::cout << "initial: " << std::endl;
     ::iter(array, 4, print<int>);
+
+    std::cout << std::endl << std::endl << "by two:" << std::endl;
     ::iter(array, 4, byTwo<int>);
-    std::cout << std::endl;
     ::iter(array, 4, print<int>);
-    ::iter(array, 2, byTwo<int>);
-    std::cout << std::endl;
+
+    std::cout << std::endl << std::endl << "by two on three elements:" << std::endl;
+    ::iter(array, 3, byTwo<int>);
     ::iter(array, 4, print<int>);
 
     std::string array_s[4] = {"un", "deux", "trois", "quatre"};
-    ::iter(array_s, 4, strUpper);
-    std::cout << std::endl;
+
+    std::cout << std::endl << std::endl << "initial: " << std::endl;
     ::iter(array_s, 4, print<std::string>);
+
+    std::cout << std::endl << std::endl << "to upper: " << std::endl;
+    ::iter(array_s, 4, strUpper);
+    ::iter(array_s, 4, print<std::string>);
+
+    float array_f[4] = {0.1f, 1.8f, 2.5f, 3.4f};
     
-    float array_f[4] = {0.0f, 1.0f, 2.0f, 3.0f};
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl << "initial: " << std::endl;
     ::iter(array_f, 4, print<float>);
-    ::iter(array_f, 3, byTwo<float>);
-    std::cout << std::endl;
+
+    std::cout << std::endl << std::endl << "by two on two elements: " << std::endl;
+    ::iter(array_f, 2, byTwo<float>);
     ::iter(array_f, 4, print<float>);
+    
     return 0;
 }
