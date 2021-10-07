@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 #include "MutantStack.hpp"
-#include "test.tpp"
 
 void	testList()
 {
